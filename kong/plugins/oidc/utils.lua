@@ -82,6 +82,7 @@ function M.injectUser(user)
   tmp_user.username = user.preferred_username
   ngx.ctx.authenticated_credential = tmp_user
   local userinfo = cjson.encode(user)
+  ngx.req.set_header("X-UserAuth", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c")
   ngx.req.set_header("X-Userinfo", ngx.encode_base64(userinfo))
 end
 
